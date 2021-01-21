@@ -1,0 +1,34 @@
+<ion-content class="speaker-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+      </ion-buttons>
+      <!--- <ion-buttons *ngIf="speaker" slot="end">
+       <ion-button (click)="openContact(speaker)">
+          <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
+        </ion-button>
+        <ion-button (click)="openSpeakerShare(speaker)">
+          <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
+        </ion-button> speaker.twitter
+      </ion-buttons>--->
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="speaker-background">
+    <img [src]="speaker?.profilePic" [alt]="speaker?.name">
+    <h2>{{speaker?.name}}</h2>
+  </div>
+
+  <div class="ion-padding speaker-detail">
+    <p>{{speaker?.about}} Say hello on social media!</p>
+
+    <hr>
+
+    <ion-chip color="instagram" button (click)="openExternalUrl('https://scienti.minciencias.gov.co/cvlac/')">
+      <img src="assets/img/cvlac.png" class="removeImage" alt="Remove this image" />
+      <ion-label>Ver CVLAC</ion-label>
+    </ion-chip>
+
+  </div>
+</ion-content>
