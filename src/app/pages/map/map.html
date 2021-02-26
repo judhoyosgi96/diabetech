@@ -8,5 +8,95 @@
 </ion-header>
 
 <ion-content>
-  <div #mapCanvas class="map-canvas"></div>
+
+ <ion-grid fixed>
+    <ion-row>
+<ion-col *ngFor="let device of devices">
+ <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+               <ion-card>
+                  <ion-card-header>
+                      <img src={{device.image}}/>
+                  </ion-card-header>
+                </ion-card>     
+  	</div>
+		<div class="back">
+                  <ion-card >
+		                  <ion-card-header>                     
+                 <ion-label>
+                        <h2><b>{{device.name}}</b></h2>
+                        <p>{{device.description}}</p>
+                      </ion-label>
+                  </ion-card-header>
+                </ion-card>
+		</div>
+	</div>
+</div>
+ </ion-col>
+ </ion-row>
+
+ </ion-grid>
+
 </ion-content>
+
+
+<style>
+
+
+ion-card{
+        display: flex;
+        flex-direction: column;
+        margin: 90 ;
+        width: 100%;
+        height: 100%;
+      }
+
+ion-content ion-card{
+  width: 100%;
+}
+
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+	transform: rotateY(180deg);
+}
+  
+
+.flip-container, .front, .back {
+	width: 170px;
+	height: 150px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+  
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+</style>

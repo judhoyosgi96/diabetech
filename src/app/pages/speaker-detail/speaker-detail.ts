@@ -31,6 +31,16 @@ export class SpeakerDetailPage {
           }
         }
       }
+
+      if (data && data.speakers2) {
+        for (const speaker2 of data.speakers2) {
+          if (speaker2 && speaker2.id === speakerId) {
+            this.speaker = speaker2;
+            break;
+          }
+        }
+      }
+
     });
   }
 

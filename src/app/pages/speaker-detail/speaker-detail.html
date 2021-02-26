@@ -11,7 +11,7 @@
         <ion-button (click)="openSpeakerShare(speaker)">
           <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
         </ion-button> speaker.twitter
-      </ion-buttons>--->
+      </ion-buttons>-->
     </ion-toolbar>
   </ion-header>
 
@@ -21,11 +21,11 @@
   </div>
 
   <div class="ion-padding speaker-detail">
-    <p>{{speaker?.about}} Say hello on social media!</p>
+    <p>{{speaker?.about}} </p>
 
     <hr>
 
-    <ion-chip color="instagram" button (click)="openExternalUrl('https://scienti.minciencias.gov.co/cvlac/')">
+    <ion-chip color="instagram" button (click)="openExternalUrl(speaker?.url)">
       <img src="assets/img/cvlac.png" class="removeImage" alt="Remove this image" />
       <ion-label>Ver CVLAC</ion-label>
     </ion-chip>

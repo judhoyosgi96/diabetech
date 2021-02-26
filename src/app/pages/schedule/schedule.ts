@@ -6,6 +6,9 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html',
@@ -34,8 +37,16 @@ export class SchedulePage implements OnInit {
     public routerOutlet: IonRouterOutlet,
     public toastCtrl: ToastController,
     public user: UserData,
-    public config: Config
+    public config: Config,
+    public inAppBrowser: InAppBrowser,
   ) { }
+
+  openExternalUrl(url: string) {
+    this.inAppBrowser.create(
+      url,
+      '_blank'
+    );
+  }
 
   ngOnInit() {
     this.updateSchedule();

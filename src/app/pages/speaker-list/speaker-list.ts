@@ -8,12 +8,16 @@ import { ConferenceData } from '../../providers/conference-data';
 })
 export class SpeakerListPage {
   speakers: any[] = [];
+  speakers2: any[] = [];
 
   constructor(public confData: ConferenceData) {}
 
   ionViewDidEnter() {
     this.confData.getSpeakers().subscribe((speakers: any[]) => {
       this.speakers = speakers;
+    });
+    this.confData.getSpeakers2().subscribe((speakers2: any[]) => {
+      this.speakers2 = speakers2;
     });
   }
 }

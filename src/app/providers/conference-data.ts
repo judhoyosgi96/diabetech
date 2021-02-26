@@ -109,12 +109,8 @@ export class ConferenceData {
 
     // if any of the sessions tracks are not in the
     // exclude tracks then this session passes the track test
-    let matchesTracks = false;
-    session.tracks.forEach((trackName: string) => {
-      if (excludeTracks.indexOf(trackName) === -1) {
-        matchesTracks = true;
-      }
-    });
+    let matchesTracks = true;
+
 
     // if the segment is 'favorites', but session is not a user favorite
     // then this session does not pass the segment test
@@ -142,6 +138,32 @@ export class ConferenceData {
       })
     );
   }
+
+  getDevices() {
+    return this.load().pipe(
+      map((data: any) => {
+        return data.devices.sort((a: any, b: any) => {
+          const aName = a.name.split(' ').pop();
+          const bName = b.name.split(' ').pop();
+          return aName.localeCompare(bName);
+        });
+      })
+    );
+  }
+
+  
+  getSpeakers2() {
+    return this.load().pipe(
+      map((data: any) => {
+        return data.speakers2.sort((a: any, b: any) => {
+          const aName = a.name.split(' ').pop();
+          const bName = b.name.split(' ').pop();
+          return aName.localeCompare(bName);
+        });
+      })
+    );
+  }
+
 
   getTracks() {
     return this.load().pipe(
